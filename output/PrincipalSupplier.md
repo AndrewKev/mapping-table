@@ -1,0 +1,337 @@
+---
+id: "PrincipalSupplier"
+name: "PrincipalSupplier"
+group: IMMD
+url: "/Transaction/PrincipalSupplier"
+---
+
+# Direct Read
+
+- MCGDATA.A_MINOR_CTN
+- MCGDATA.BANK_SUPPLIER
+- MCGDATA.DAFTAR_HARI
+- MCGDATA.DD_FLAG
+- MCGDATA.DIVDEPT_UMKM
+- MCGDATA.D_CONTACT_PERSON
+- MCGDATA.D_CONTACT_PERSON_MVC
+- MCGDATA.D_GUDANG
+- MCGDATA.D_GUDANG_MVC
+- MCGDATA.D_JADWAL_KIRIM
+- MCGDATA.D_JADWAL_KIRIM_MVC
+- MCGDATA.D_MINOR_CTN
+- MCGDATA.D_NPWP
+- MCGDATA.D_NPWP_MVC
+- MCGDATA.D_ORD_NON_MINGGU
+- MCGDATA.D_PERWAKILAN_LK
+- MCGDATA.D_PERWAKILAN_LK_MVC
+- MCGDATA.D_SUPPLIER_FOOTNOTEPO
+- MCGDATA.D_SUPPLIER_NOFAX
+- MCGDATA.D_SUPPLIER_TAHAN_BYR
+- MCGDATA.D_SUPP_FOOTNOTEPO_CAB
+- MCGDATA.D_SUPP_FREEZ
+- MCGDATA.D_SUPP_REGION
+- MCGDATA.D_SUPP_REGION_MVC
+- MCGDATA.D_SUPP_SENTRALISASI
+- MCGDATA.D_SUPP_SENTRALISASI_V
+- MCGDATA.D_SUPP_SENTRALISASI_V2
+- MCGDATA.D_SUPP_TOP
+- MCGDATA.D_SUPP_TOP_MVC
+- MCGDATA.LAPORAN_BANK_SUPPLIER
+- MCGDATA.LOG_SUPP_DISCONTINUE
+- MCGDATA.MS_BANK
+- MCGDATA.M_BENTUK_USAHA
+- MCGDATA.M_CURR_SUPP
+- MCGDATA.M_FLAG_SUPP
+- MCGDATA.M_FREEZ
+- MCGDATA.M_MPSBU
+- MCGDATA.M_PRODUK
+- MCGDATA.SELECT_HARI
+- MCGDATA.SUPP_BD_TGH
+- MCGDATA.SUPP_FREEZE_DETAIL
+- MCGDATA.SUPP_FREEZE_HEADER
+- MCGDATA.SUP_BANK_TGL_BERLAKU
+- MCGDATA.T_CABANG
+- MCGDATA.T_FLAG_SUPP
+- MCGDATA.T_GROUP_SUPPLIER
+- MCGDATA.T_JNS_SUPPLIER
+- MCGDATA.T_LEAD_TIME
+- MCGDATA.T_NEGARA
+- MCGDATA.T_OPTION_PAYMENT
+- MCGDATA.T_PENANGANAN_BRG
+- MCGDATA.T_SAT_BELI
+- MCGDATA.T_SUPPLIER
+- MCGDATA.T_SUPP_KONV
+- MCGDATA.T_UNIT
+- MCGDATA.T_WILAYAH
+- MCGDATA.UPD_TTF_SUPPLIER
+- MCGDATA.V3_M_PRODUK
+- MCGDATA.VU_MSTOKO
+
+# Direct Write
+
+- MCGDATA.D_CONTACT_PERSON
+- MCGDATA.D_GUDANG
+- MCGDATA.D_JADWAL_KIRIM
+- MCGDATA.D_NPWP
+- MCGDATA.D_ORD_NON_MINGGU
+- MCGDATA.D_PERWAKILAN_LK
+- MCGDATA.D_SUPPLIER_FOOTNOTEPO
+- MCGDATA.D_SUPPLIER_NOFAX
+- MCGDATA.D_SUPPLIER_TAHAN_BYR
+- MCGDATA.D_SUPP_FOOTNOTEPO_CAB
+- MCGDATA.D_SUPP_FREEZ
+- MCGDATA.D_SUPP_REGION
+- MCGDATA.D_SUPP_SENTRALISASI
+- MCGDATA.D_SUPP_TOP
+- MCGDATA.KARENA
+- MCGDATA.LOG_DELETE_M_CURR_SUPP
+- MCGDATA.M_BIAYA_KLAIM
+- MCGDATA.M_CURR_SUPP
+- MCGDATA.SELECT_HARI
+- MCGDATA.T_SUPPLIER
+- MCGDATA.T_SUPP_KONV
+
+# Calls
+
+- MCGDATA.CARI_DESK_PRODUK
+- MCGDATA.DELETE_SELECT_HARI
+- MCGDATA.GET_HARI
+- MCGDATA.GET_ORDERDAY
+- MCGDATA.LAP_BANK_SUPPLIER1
+- MCGDATA.LOAD_SELECT_HARI1
+- MCGDATA.SUPPLIER_KONV_NUMBER
+- MCGDATA.SUPPLIER_KONV_NUMBER_IDM
+
+# Analysis Notes
+
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: " INSERT INTO log_delete_m_curr_supp(fmkode,fmksup,fmjnsh,fmksbu,fmkwil,fmkcab,fmktko,fmtgup,fmuser,fmtgrc,fmipad) "
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: " SELECT 1 FROM T_SUPPLIER "
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: " SELECT 1 FROM m_curr_supp a, DIVDEPT_UMKM b, m_produk c  WHERE a.fmkode = c.fmkode "
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: " SELECT 1 FROM m_curr_supp a, dd_flag b "
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: " SELECT A.FTKODE, A.KD_DC, A.FDTGTF, A.FLAG, A.FTKWIL, A.FDRCID "
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: " SELECT ftfdpt FROM t_supplier WHERE ftkode = '"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: " UPDATE  T_SUPPLIER SET FTHRKJ = '"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: " UPDATE  T_SUPPLIER SET SINGKATAN = '"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "DELETE FROM D_GUDANG WHERE FDKODE = '"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "DELETE FROM D_NPWP WHERE FDKODE = '"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "INSERT INTO D_CONTACT_PERSON(FDKODE, FDKWIL, FDCPER, FDTLCP, FDHPCP, JABATAN,FDECPR,FDUSER,FDTGUP,FDIPAD)"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "INSERT INTO D_GUDANG(FDKODE, FDKWIL, FDHPCP, FDCPER, FDTLCP, FDAGD1, FDAGD2, FDAGD3, FDECPR, FDUSER, FDTGUP)"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "INSERT INTO D_NPWP(FDKODE,FDNPWP,FDGRAN,FDNMWP,FDBANK,FDNPA1,FDNPA2,FDNPA3,FDACCT,FDNKPP,FDNOSK,FDTGSK,FDUSER,FDTGUP) "
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "INSERT INTO D_PERWAKILAN_LK(FDKODE, FDKWIL, FDNMPR, FDNMCP, FDALMT, FDTELP,FDUSER,FDTGUP,FDIPAD)"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "INSERT INTO D_SUPP_FOOTNOTEPO_CAB(KDSUPPLIER, KDOPU,WILAYAH,CABANG, PO_FOOT_NOTE1,PO_FOOT_NOTE2,KDUSER,TGL_UPDATE,IPADDRESS)"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "INSERT INTO D_SUPP_FREEZ(FDKSUP, FDFREZ, FDUSER,FDTGUP,FDIPAD)"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "INSERT INTO D_SUPP_REGION(FDKODE, FDKSBU, FDKWIL, FDJWPB, FTUSER, FTTGUP, FDIPAD)"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "INSERT INTO D_SUPP_TOP(FDKODE, FDKSBU, FDJTOP, FTUSER, FTTGUP, FDIPAD)"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "INSERT INTO T_SUPP_KONV(FTKSBU, FTKWIL, FTKODE, FTSUPP, FTUSER, FTTGUP, IP_ADDRESS)"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "SELECT * FROM T_SUPPLIER WHERE FTKODE = '"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "SELECT FDKODE, FDKSBU, FDKWIL FROM D_SUPP_REGION WHERE FDKODE = "
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "SELECT FDKSBU, FDJTOP FROM D_SUPP_TOP_MVC WHERE FDKODE = "
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "SELECT TO_CHAR(A.NO_PROPOSAL), B.DC, TO_CHAR(B.MIN_GAB_CTN), B.KELIPATAN, TO_CHAR(A.TGL_PROPOSAL,'DD-MON-YYYY'), TO_CHAR(A.TGL_BERLAKU,'DD-MON-YYYY') FROM A_MINOR_CTN A, D_MINOR_CTN B WHERE A.KD_SUPP = '"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "SELECT supplier_konv_number('"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "SELECT supplier_konv_number_idm('"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "UPDATE D_CONTACT_PERSON SET FDTLCP = '"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "UPDATE D_GUDANG SET FDHPCP = '"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "UPDATE D_JADWAL_KIRIM SET FDHRKJ = '"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "UPDATE D_NPWP SET FDGRAN = '"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "UPDATE D_PERWAKILAN_LK SET FDNMPR = '"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "UPDATE D_SUPP_FOOTNOTEPO_CAB SET  PO_FOOT_NOTE1 = '"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "UPDATE D_SUPP_FREEZ SET  FDUSER = '"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "UPDATE D_SUPP_REGION SET FDJWPB = "
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "UPDATE D_SUPP_REGION SET FDJWPB = '"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "UPDATE D_SUPP_SENTRALISASI SET FDTGTF = NULL, FDRCID = '1' WHERE  FDKODE = '"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "UPDATE D_SUPP_TOP SET FDJTOP = "
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "delete from D_CONTACT_PERSON WHERE FDKODE= "
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "delete from D_JADWAL_KIRIM WHERE FDKODE= "
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "delete from D_PERWAKILAN_LK WHERE FDKODE= "
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "delete from D_SUPP_FOOTNOTEPO_CAB WHERE KDSUPPLIER= "
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "delete from D_SUPP_FREEZ WHERE FDKSUP= "
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "delete from D_SUPP_REGION WHERE FDKODE= "
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "delete from D_SUPP_TOP WHERE FDKODE= "
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "delete from M_BIAYA_KLAIM WHERE FTKODE= "
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "delete from m_curr_supp where fmksup='"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "select Cari_Desk_Produk("
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "select TRUNC(sysdate+"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "select jumlah_hari from SUP_BANK_TGL_BERLAKU WHERE SBU = '"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: <empty>
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: @" 
+                    UPDATE T_SUPPLIER 
+                    SET 
+                        FTNAMA = '"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: query
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: query1
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: sql
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("DELETE FROM D_ORD_NON_MINGGU WHERE FDKODE = '{0}' ", kode)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("DELETE FROM D_ORD_NON_MINGGU WHERE FDKODE = '{0}' AND FDKPLU = '{1}' ", kode, plu)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("DELETE FROM D_SUPPLIER_FOOTNOTEPO WHERE KDSUPPLIER =  '{0}' ", kode)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("DELETE FROM D_SUPPLIER_FOOTNOTEPO WHERE KDSUPPLIER = '{0}' AND KDOPU = '{1}' ", kode, opu)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("DELETE FROM D_SUPPLIER_NOFAX WHERE KD_SUPPLIER =  '{0}' ", kode)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("DELETE FROM D_SUPPLIER_NOFAX WHERE KD_SUPPLIER = '{0}' AND NO_FAX = '{1}' ", kode, fax)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("DELETE FROM D_SUPPLIER_TAHAN_BYR WHERE KDSUPPLIER =  '{0}' ", kode)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("DELETE FROM D_SUPPLIER_TAHAN_BYR WHERE KDSUPPLIER = '{0}' AND KDOPU = '{1}' ", kode, opu)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("DELETE FROM D_SUPP_SENTRALISASI WHERE FDKODE =  '{0}' ", kode)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("DELETE FROM D_SUPP_SENTRALISASI WHERE FDKODE = '{0}' AND FDKCAB = '{1}' ", kode, cab)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("INSERT INTO D_SUPPLIER_FOOTNOTEPO VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}') ", kode, opu, po1, po2, tglupd, userupd, ipupd)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("INSERT INTO D_SUPPLIER_NOFAX VALUES('{0}', '{1}', '{2}', '{3}', '{4}') ", kode, fax, tglupd, userupd, ipupd)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("INSERT INTO D_SUPPLIER_TAHAN_BYR(KDSUPPLIER, KDOPU, FLAG, TGL_BUKA, TGL_TUTUP, TGL_UPDATE, KDUSER, IPADDRESS) values('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}') ", kode, opu, hp, rilis, hold, tglupd, userupd, ipupd)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("INSERT INTO D_SUPPLIER_TAHAN_BYR(KDSUPPLIER, KDOPU, FLAG, TGL_BUKA, TGL_UPDATE, KDUSER, IPADDRESS) values('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}') ", kode, opu, hp, rilis, tglupd, userupd, ipupd)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("INSERT INTO D_SUPPLIER_TAHAN_BYR(KDSUPPLIER, KDOPU, FLAG, TGL_TUTUP, TGL_UPDATE, KDUSER, IPADDRESS) values('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}') ", kode, opu, hp, hold, tglupd, userupd, ipupd)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("INSERT INTO D_SUPPLIER_TAHAN_BYR(KDSUPPLIER, KDOPU, FLAG, TGL_UPDATE, KDUSER, IPADDRESS) values('{0}', '{1}', '{2}', '{3}', '{4}', '{5}') ", kode, opu, hp, tglupd, userupd, ipupd)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("INSERT INTO D_SUPP_SENTRALISASI VALUES('{0}', '{1}', '{2}', '{3}')", kode, cab, ttf, rcid)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("INSERT INTO D_SUPP_SENTRALISASI VALUES('{0}', '{1}', to_date('{2}','dd/mm/yyyy'), '{3}')", kode, cab1, ttf1, rcid)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("INSERT INTO D_SUPP_SENTRALISASI(FDKODE, FDKCAB,FDRCID)  VALUES('{0}', '{1}', '{2}')", kode, cab1, rcid)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("INSERT INTO M_BIAYA_KLAIM(FTKODE,BIAYA_KLAIM,SAT_JUAL,KLAIM_BARCODE) VALUES({0}, {1}, {2}, 'Y')", kode, biaya, satjual)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("SELECT * FROM T_SUPPLIER WHERE FTKODE = {0} AND STORE_ORDERED = 'Y'", id)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("SELECT * FROM T_SUPPLIER WHERE FTKODE = {0}", id)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("SELECT DISTINCT a.kd_dc,d.fdkode, d.FdKWIL FROM vu_mstoko a,T_CABANG b, d_supp_region d WHERE a.kd_dc=b.ftkode AND d.FDKWIL=b.FTKWIL AND d.fdksbu = '3' and d.fdkode=" + kode)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("SELECT FDKODE, FDKPLU, FDFKRM, FDJWPB, FDTGOR, FDTGKR FROM D_ORD_NON_MINGGU WHERE FDKODE = '{0}' ", kode)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("SELECT FDKODE, FDKPLU, FDFKRM, FDJWPB, FDTGOR, FDTGKR FROM D_ORD_NON_MINGGU WHERE FDKODE = '{0}' AND FDKPLU = '{1}'", kode, plu)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("SELECT FDKODE, FDKSBU, FDKWIL, FDKCAB, FDHRKJ, TOP_PERPANJANGAN, PERIODE_AWAL, PERIODE_AKHIR, HARI_ORDER, JAM_BONGKAR, FDJWPB, MINOR_GAB_PCS, MINOR_GAB_CTN FROM D_JADWAL_KIRIM WHERE FDKODE = '{0}' ", kode)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("SELECT FDKODE,FDKWIL,FDCPER, FDTLCP, FDHPCP, JABATAN, FDECPR FROM D_CONTACT_PERSON WHERE FDKODE = '{0}' ", kode)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("SELECT FDKSUP, FDFREZ FROM D_SUPP_FREEZ WHERE FDKSUP = '{0}' ", kode)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("SELECT FLAG_SUPPLIER FROM M_FLAG_SUPP")
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("SELECT FTKODE, FTNAMA, FTALMT, FTALM2, FTALM3, FTMAIL, FTTLPK, FTFXK1, FTFXK2, FTFXPO, FTNPSM, FTNPWP, FTNMWP, FTAPWP, FTAPW2, FTAPW3, FTNOSK, FTTGSK, FTNKPP, "+
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("SELECT KDSUPPLIER, KDOPU, FLAG, TGL_BUKA, TGL_TUTUP FROM D_SUPPLIER_TAHAN_BYR WHERE KDSUPPLIER = '{0}' ", kode)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("SELECT KDSUPPLIER, KDOPU, FLAG, TGL_BUKA, TGL_TUTUP FROM D_SUPPLIER_TAHAN_BYR WHERE KDSUPPLIER = '{0}' AND KDOPU = '{1}' ", kode, opu)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("SELECT KDSUPPLIER, KDOPU, PO_FOOT_NOTE1, PO_FOOT_NOTE2 FROM D_SUPPLIER_FOOTNOTEPO WHERE KDSUPPLIER = '{0}' ", kode)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("SELECT KDSUPPLIER, KDOPU, PO_FOOT_NOTE1, PO_FOOT_NOTE2 FROM D_SUPPLIER_FOOTNOTEPO WHERE KDSUPPLIER = '{0}' AND KDOPU = '{1}' ", kode, opu)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("SELECT KDSUPPLIER, KDOPU,WILAYAH,CABANG,PO_FOOT_NOTE1,PO_FOOT_NOTE2 FROM D_SUPP_FOOTNOTEPO_CAB WHERE KDSUPPLIER = '{0}' ", kode)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("SELECT KD_SUPPLIER, NO_FAX FROM D_SUPPLIER_NOFAX WHERE KD_SUPPLIER = '{0}' ", kode)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("SELECT KD_SUPPLIER, NO_FAX FROM D_SUPPLIER_NOFAX WHERE KD_SUPPLIER = '{0}' AND NO_FAX = '{1}'", kode, fax)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("SELECT MAX(tgl_berlaku) FROM BANK_SUPPLIER where tgl_berlaku <= trunc(sysdate) and unit = '{0}' and kode_supp = '{1}'", unit, kode)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("SELECT SELECT FDKODE, FDKCAB, FDTGTF FROM D_SUPP_SENTRALISASI WHERE fdkode = " + kode)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("UPDATE D_ORD_NON_MINGGU SET FDFKRM = '{0}', FDJWPB = '{1}', FDTGKR = '{2}', FTUSER = '{3}', FTTGUP = '{4}', FDIPAD = '{5}' WHERE FDKODE = '{6}' AND FDKPLU = '{7}' ", delivery, leadtime, kirim, userupd, tglupd, ipupd, kode, plu)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("UPDATE D_ORD_NON_MINGGU SET FDFKRM = '{0}', FDJWPB = '{1}', FDTGOR = '{2}', FDTGKR = '{3}', FTUSER = '{4}', FTTGUP = '{5}', FDIPAD = '{6}' WHERE FDKODE = '{7}' AND FDKPLU = '{8}' ", delivery, leadtime, order, kirim, userupd, tglupd, ipupd, kode, plu)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("UPDATE D_ORD_NON_MINGGU SET FDFKRM = '{0}', FDJWPB = '{1}', FDTGOR = '{2}', FTUSER = '{3}', FTTGUP = '{4}', FDIPAD = '{5}' WHERE FDKODE = '{6}' AND FDKPLU = '{7}' ", delivery, leadtime, order, userupd, tglupd, ipupd, kode, plu)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("UPDATE D_ORD_NON_MINGGU SET FDFKRM = '{0}', FDJWPB = '{1}', FTUSER = '{2}', FTTGUP = '{3}', FDIPAD = '{4}' WHERE FDKODE = '{5}' AND FDKPLU = '{6}' ", delivery, leadtime, userupd, tglupd, ipupd, kode, plu)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("UPDATE D_SUPPLIER_FOOTNOTEPO SET PO_FOOT_NOTE1 = '{0}', PO_FOOT_NOTE2 = '{1}', TGL_UPDATE = '{2}', KDUSER = '{3}', IPADDRESS = '{4}' WHERE KDSUPPLIER =  '{5}' AND KDOPU = '{6}' ", po1, po2, tglupd, userupd, ipupd, kode, opu)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("UPDATE D_SUPPLIER_NOFAX SET NO_FAX = '{0}', TGL_UPDATE = '{1}', KD_USER = '{2}', IP_ADDRESS = '{3}' WHERE KD_SUPPLIER = '{4}' ", fax, tglupd, userupd, ipupd, kode)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("UPDATE D_SUPPLIER_NOFAX SET NO_FAX = '{0}', TGL_UPDATE = '{1}', KD_USER = '{2}', IP_ADDRESS = '{3}' WHERE KD_SUPPLIER = '{4}' AND NO_FAX = '{5}' ", fax, tglupd, userupd, ipupd, kode, oldfax)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("UPDATE D_SUPPLIER_TAHAN_BYR SET FLAG = '{0}', TGL_BUKA = '{1}', TGL_TUTUP = '{2}', TGL_UPDATE = '{3}', KDUSER = '{4}', IPADDRESS = '{5}'  WHERE KDSUPPLIER =  '{6}' AND KDOPU = '{7}' ", hp, null, hold, tglupd, userupd, ipupd, kode, opu)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("UPDATE D_SUPPLIER_TAHAN_BYR SET FLAG = '{0}', TGL_BUKA = '{1}', TGL_TUTUP = '{2}', TGL_UPDATE = '{3}', KDUSER = '{4}', IPADDRESS = '{5}'  WHERE KDSUPPLIER =  '{6}' AND KDOPU = '{7}' ", hp, null, null, tglupd, userupd, ipupd, kode, opu)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("UPDATE D_SUPPLIER_TAHAN_BYR SET FLAG = '{0}', TGL_BUKA = '{1}', TGL_TUTUP = '{2}', TGL_UPDATE = '{3}', KDUSER = '{4}', IPADDRESS = '{5}'  WHERE KDSUPPLIER =  '{6}' AND KDOPU = '{7}' ", hp, rilis, hold, tglupd, userupd, ipupd, kode, opu)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("UPDATE D_SUPPLIER_TAHAN_BYR SET FLAG = '{0}', TGL_BUKA = '{1}', TGL_TUTUP = '{2}', TGL_UPDATE = '{3}', KDUSER = '{4}', IPADDRESS = '{5}'  WHERE KDSUPPLIER =  '{6}' AND KDOPU = '{7}' ", hp, rilis, null, tglupd, userupd, ipupd, kode, opu)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("UPDATE D_SUPP_SENTRALISASI SET FDTGTF = '', FDRCID = '{0}' WHERE FDKODE = '{1}' AND FDKCAB = '{2}' ", rcid, kode, cab)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("UPDATE D_SUPP_SENTRALISASI SET FDTGTF = '{0}', FDRCID = '{1}' WHERE FDKODE = '{2}' AND FDKCAB = '{3}' ", ttf, rcid, kode, cab)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("UPDATE M_BIAYA_KLAIM SET  BIAYA_KLAIM = {0} where FTKODE = {1} and SAT_JUAL = {2}", biaya, kode, satjual)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("UPDATE SELECT_HARI SET SELECT_ID = 'N' WHERE IP_ADDRESS = '{0}' AND DATE_ACCESS = TO_DATE('{1}', 'DD/MM/YYYY')  AND DIGUNAKAN_UNTUK = '{2}'", ipAddress, date.ToString("dd/MM/yyyy"), use)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("UPDATE SELECT_HARI SET SELECT_ID = 'Y' WHERE IP_ADDRESS = '{0}' AND DATE_ACCESS = TO_DATE('{1}', 'DD/MM/YYYY')  AND DIGUNAKAN_UNTUK = '{2}'", ipAddress, date.ToString("dd/MM/yyyy"), use)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("insert into D_ORD_NON_MINGGU VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}') ", kode, plu, delivery, leadtime, order, kirim, tglupd, userupd, ipupd)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("insert into D_ORD_NON_MINGGU(FDKODE, FDKPLU, FDFKRM, FDJWPB, FDTGKR, FTTGUP, FTUSER, FDIPAD) VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}') ", kode, plu, delivery, leadtime, kirim, tglupd, userupd, ipupd)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("insert into D_ORD_NON_MINGGU(FDKODE, FDKPLU, FDFKRM, FDJWPB, FDTGOR, FTTGUP, FTUSER, FDIPAD) VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}') ", kode, plu, delivery, leadtime, order, tglupd, userupd, ipupd)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("insert into D_ORD_NON_MINGGU(FDKODE, FDKPLU, FDFKRM, FDJWPB, FTTGUP, FTUSER, FDIPAD) VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}') ", kode, plu, delivery, leadtime, tglupd, userupd, ipupd)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("select  FDJTOP,FDKSBU from d_supp_top where fdksbu='{0}' and  fdkode='{1}'", sbu, supp)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("select FDKODE, FDKSBU, FDKWIL from D_SUPP_REGION where FDKODE='{0}' and  FDKSBU='{1}' and  FDKWIL='{2}'", sbu, supp, wil)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("select FDNPA1,FDKODE from D_NPWP where FDKODE='{0}' and  FDNPWP='{1}'", ftkode, npwp)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("select count(1) from D_CONTACT_PERSON where FDKODE='{0}' and  FDKWIL='{1}' and  FDCPER='{2}'", kode, wil, per)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("select count(1) from D_CONTACT_PERSON where FDKODE='{0}'", kode)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("select count(1) from D_GUDANG where FDKODE='{0}' and  FDKWIL='{1}'", kode, wil)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("select count(1) from D_JADWAL_KIRIM where FDKODE='{0}' and  FDKWIL='{1}' and  FDKSBU='{2}' and  FDKCAB='{3}'", kode, wil, opu, cab)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("select count(1) from D_JADWAL_KIRIM where FDKODE='{0}'", kode)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("select count(1) from D_PERWAKILAN_LK where FDKODE='{0}' and  FDKWIL='{1}'", supp, wil)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("select count(1) from D_PERWAKILAN_LK where FDKODE='{0}'", supp)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("select count(1) from D_SUPP_FOOTNOTEPO_CAB where KDSUPPLIER='{0}' and  KDOPU='{1}' and  WILAYAH='{2}' and  CABANG='{3}'", kode, opu, wil, cab)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("select count(1) from D_SUPP_FREEZ where FDKSUP='{0}' and  FDFREZ='{1}'", kode, frez)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("select count(1) from D_SUPP_FREEZ where FDKSUP='{0}'", kode)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("select count(1) from D_SUPP_SENTRALISASI_V2 where FTKODE='{0}' and  KD_DC='{1}'", kode, cab)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("select count(1) from D_SUPP_SENTRALISASI_V2 where FTKODE='{0}'", kode)
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value:  
+                    UPDATE T_SUPPLIER 
+                    SET 
+                        FTNAMA = '
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value:  (SELECT fmkode,fmksup,fmjnsh,fmksbu,fmkwil,fmkcab,fmktko,SYSDATE,'
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value:  FROM m_curr_supp WHERE fmksup='
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value:  SELECT ftfdpt FROM t_supplier WHERE ftkode = '
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value:  UPDATE  T_SUPPLIER SET FTHRKJ = '
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value:  UPDATE  T_SUPPLIER SET SINGKATAN = '
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value:  WHERE FTKODE = '
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: ' 
+                    WHERE FTKODE = '
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: ' WHERE FDKODE= 
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: ' WHERE FTKODE = '
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: ', FDTGUP = sysdate WHERE FDKODE= 
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: ', TGL_UPDATE = sysdate, IPADDRESS= '
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: ','S') FROM dual
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: ',1,1))) FROM dual
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: ) from dual
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: DELETE FROM D_GUDANG WHERE FDKODE = '
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: DELETE FROM D_NPWP WHERE FDKODE = '
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: SELECT * FROM T_SUPPLIER WHERE FTKODE = '
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: SELECT DISTINCT a.kd_dc,d.fdkode, d.FdKWIL FROM vu_mstoko a,T_CABANG b, d_supp_region d WHERE a.kd_dc=b.ftkode AND d.FDKWIL=b.FTKWIL AND d.fdksbu = '3' and d.fdkode=
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: SELECT FDKODE, FDKSBU, FDKWIL FROM D_SUPP_REGION WHERE FDKODE = 
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: SELECT FDKSBU, FDJTOP FROM D_SUPP_TOP_MVC WHERE FDKODE = 
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: SELECT FTNAMA FROM T_SUPPLIER WHERE FTKODE = '
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: SELECT SELECT FDKODE, FDKCAB, FDTGTF FROM D_SUPP_SENTRALISASI WHERE fdkode = 
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: SELECT TO_CHAR(A.NO_PROPOSAL), B.DC, TO_CHAR(B.MIN_GAB_CTN), B.KELIPATAN, TO_CHAR(A.TGL_PROPOSAL,'DD-MON-YYYY'), TO_CHAR(A.TGL_BERLAKU,'DD-MON-YYYY') FROM A_MINOR_CTN A, D_MINOR_CTN B WHERE A.KD_SUPP = '
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: SELECT supplier_konv_number('
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: SELECT supplier_konv_number_idm('
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: UPDATE D_CONTACT_PERSON SET FDTLCP = '
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: UPDATE D_GUDANG SET FDHPCP = '
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: UPDATE D_JADWAL_KIRIM SET FDHRKJ = '
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: UPDATE D_NPWP SET FDGRAN = '
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: UPDATE D_PERWAKILAN_LK SET FDNMPR = '
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: UPDATE D_SUPP_FOOTNOTEPO_CAB SET  PO_FOOT_NOTE1 = '
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: UPDATE D_SUPP_FREEZ SET  FDUSER = '
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: UPDATE D_SUPP_REGION SET FDJWPB = 
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: UPDATE D_SUPP_REGION SET FDJWPB = '
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: UPDATE D_SUPP_SENTRALISASI SET FDTGTF = NULL, FDRCID = '1' WHERE  FDKODE = '
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: UPDATE D_SUPP_TOP SET FDJTOP = 
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: WHERE FDKODE= 
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: WHERE FDKODE= '
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: WHERE FDKSUP= 
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: WHERE KDSUPPLIER= 
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: delete from D_CONTACT_PERSON WHERE FDKODE= 
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: delete from D_JADWAL_KIRIM WHERE FDKODE= 
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: delete from D_PERWAKILAN_LK WHERE FDKODE= 
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: delete from D_SUPP_FOOTNOTEPO_CAB WHERE KDSUPPLIER= 
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: delete from D_SUPP_FREEZ WHERE FDKSUP= 
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: delete from D_SUPP_REGION WHERE FDKODE= 
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: delete from D_SUPP_TOP WHERE FDKODE= 
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: delete from M_BIAYA_KLAIM WHERE FTKODE= 
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: delete from m_curr_supp where fmksup='
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: select Cari_Desk_Produk(
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: select TRUNC(sysdate+
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: select jumlah_hari from SUP_BANK_TGL_BERLAKU WHERE SBU = '
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: A_MINOR_CTN.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: BANK_SUPPLIER.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: BANK_SUPPLIER.OrderBy
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: BANK_SUPPLIER.Where
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: DAFTAR_HARI.OrderBy
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: D_CONTACT_PERSON_MVC.Where
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: D_GUDANG_MVC.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: D_JADWAL_KIRIM_MVC.Where
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: D_NPWP_MVC.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: D_PERWAKILAN_LK_MVC.Where
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: D_SUPP_FOOTNOTEPO_CAB.Where
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: D_SUPP_FREEZ.Where
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: D_SUPP_REGION_MVC.Where
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: D_SUPP_SENTRALISASI.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: D_SUPP_SENTRALISASI_V.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: D_SUPP_SENTRALISASI_V.OrderBy
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: D_SUPP_TOP_MVC.Where
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: LAPORAN_BANK_SUPPLIER.Where
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: MS_BANK.OrderBy
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: M_BENTUK_USAHA.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: M_BENTUK_USAHA.OrderBy
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: M_FREEZ.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: M_FREEZ.OrderBy
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: SELECT_HARI.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: SELECT_HARI.Where
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: SUPP_BD_TGH.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_CABANG.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_CABANG.OrderBy
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_CABANG.Where
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_FLAG_SUPP.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_FLAG_SUPP.Where
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_GROUP_SUPPLIER.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_GROUP_SUPPLIER.OrderBy
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_JNS_SUPPLIER.OrderBy
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_LEAD_TIME.Where
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_NEGARA.OrderBy
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_OPTION_PAYMENT.OrderBy
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_PENANGANAN_BRG.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_PENANGANAN_BRG.OrderBy
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_UNIT.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_UNIT.OrderBy
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_WILAYAH.OrderBy
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_WILAYAH.Where
+

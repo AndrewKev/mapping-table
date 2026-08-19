@@ -1,0 +1,254 @@
+---
+id: "TransaksiCMO"
+name: "TransaksiCMO"
+group: IMMD
+url: "/Transaction/TransaksiCMO"
+---
+
+# Direct Read
+
+- MCGDATA.CEK_TOLAKAN_CMO
+- MCGDATA.CEK_TOLAKAN_CMO_REV
+- MCGDATA.CMO_PERIODE_DC_V
+- MCGDATA.FILE_REPEAT_CMO
+- MCGDATA.HASIL_HITUNG_REPEAT_CMO
+- MCGDATA.HASIL_UPLOAD_REPEAT
+- MCGDATA.HO_PROPOSAL_PROMOSI_T_TEMP
+- MCGDATA.LAP_PERHITUNGAN_CMO_REKAP
+- MCGDATA.LOG_REVCMO
+- MCGDATA.M_CMO_DAFTAR
+- MCGDATA.M_CMO_TIMING_PROMO_KODE
+- MCGDATA.M_CURR_SUPP
+- MCGDATA.M_MINOR
+- MCGDATA.M_PRODUK
+- MCGDATA.M_SAT_BELI
+- MCGDATA.M_TIPE_CMO
+- MCGDATA.NILAI_REPEAT_CMO
+- MCGDATA.TEMP_TRANSAKSIDC_CMO
+- MCGDATA.TEMP_TRANSAKSIPLU_CMO
+- MCGDATA.TMP_CMO_BATAL_DETAIL2
+- MCGDATA.TMP_CMO_BATAL_RECAP_ITEM
+- MCGDATA.TMP_CMO_BATAL_RECAP_PO
+- MCGDATA.T_CABANG
+- MCGDATA.T_CMOLWE_DC
+- MCGDATA.T_CMOLWE_PERIODE
+- MCGDATA.T_CMOLWE_PLU
+- MCGDATA.T_CMO_BAGI_MINGGU
+- MCGDATA.T_CMO_PERIODE_DC
+- MCGDATA.T_CMO_PERIODE_PLU
+- MCGDATA.T_CMO_PERIODE_PRINCIPAL
+- MCGDATA.T_CMO_PROMO
+- MCGDATA.T_CMO_PROMO_DC
+- MCGDATA.T_CMO_PROMO_PLU
+- MCGDATA.T_CMO_TIPE_PROMOSI
+- MCGDATA.T_DEPT
+- MCGDATA.T_DIVISI
+- MCGDATA.T_HASIL_HITUNG_TOTAL
+- MCGDATA.T_KATEGORI
+- MCGDATA.T_REVISI_CO_FILE
+- MCGDATA.T_REVISI_CO_PLU
+- MCGDATA.T_SUPPLIER
+- MCGDATA.T_TOLAKAN_PB_CMO
+- MCGDATA.T_TOLAKAN_PB_CMO_MINOR
+- MCGDATA.V_D_JADWAL_KIRIM
+- MCGDATA.V_T_CMO_PERIODE_DC
+- MCGDATA.V_T_CMO_PERIODE_PLU
+- MCGDATA.V_T_TOLAKAN_PB_CMO_MINOR
+- MCGDATA.V_T_TOLAKAN_PB_CMO_MINOR2
+
+# Direct Write
+
+- MCGDATA.CEK_TOLAKAN_CMO
+- MCGDATA.CEK_TOLAKAN_CMO_REV
+- MCGDATA.H_UPLOAD_REPEAT
+- MCGDATA.LAP_PERHITUNGAN_CMO_DETAIL
+- MCGDATA.LAP_PERHITUNGAN_CMO_REKAP
+- MCGDATA.PO_CMO
+- MCGDATA.PO_CMO_QUEUE
+- MCGDATA.PO_CMO_TOLAKAN
+- MCGDATA.TEMP_TRANSAKSIDC_CMO
+- MCGDATA.TEMP_TRANSAKSIPLU_CMO
+- MCGDATA.T_CMO_BAGI_MINGGU
+- MCGDATA.T_FILE_TRANSFER
+- MCGDATA.T_REVISI_CO_PLU
+- MCGDATA.T_REVISI_CO_PLU_TEMP_NEW
+- MCGDATA.T_TRFPB
+
+# Calls
+
+- MCGDATA.BAGI_CMO_PB_PROC
+- MCGDATA.BAGI_CMO_PB_TOLAKAN_MVC2
+- MCGDATA.CARI_DESK_PRODUK
+- MCGDATA.CEKPLUCMO
+- MCGDATA.CEKTANGGAL
+- MCGDATA.CMO_CONVERT_DC_IDM_IGR_IGRANAK
+- MCGDATA.GET_TOLAKAN_ALL
+- MCGDATA.HITUNG_CMO_FES2_NEW3
+- MCGDATA.HITUNG_RPT_CMO_NEW_FES191
+- MCGDATA.INSERT_TOLOKANPB
+- MCGDATA.ISCHEKEDALL_TRANSAKSI_DC
+- MCGDATA.ISDATE
+- MCGDATA.ISNUMBER
+- MCGDATA.LAPORAN_PERHITUNGAN_CMO2_NEW
+- MCGDATA.LAPORAN_PERHITUNGAN_CMO_DTL_M3
+- MCGDATA.LAPORAN_REVISI_CMO
+- MCGDATA.LAP_HIT_CMO_DET_SP_TEST
+- MCGDATA.LOAD_PERIODE_CMO_MVC
+- MCGDATA.PB_CMO_CHECK_MINOR
+- MCGDATA.PB_CMO_CHECK_REVISI
+- MCGDATA.PROSES_REVISI_CMO
+- MCGDATA.REPEEAT_TRANSAKSICMO
+- MCGDATA.UNGGAH_REV_CMO_CSV_NEW
+- MCGDATA.USER_LOGIN_SEQUENCE
+- MCGDATA.VALIDASI_CETAK_REPEAT
+- MCGDATA.VALIDASI_COMMIT_TRX_CMO
+
+# Analysis Notes
+
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "  DELETE FROM T_REVISI_CO_PLU_TEMP_new WHERE users = '"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "  SELECT DISTINCT  to_char(a.pro_id)  FROM T_CMO_TIPE_PROMOSI a WHERE a.nocmo = '"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "  SELECT NOCMO, PLU, DESK_PROD, DC, ISI_BELI, PALET, PER_ITEM, GABUNG, TO_CHAR(SPD) SPD,  ROUND(JTD,2) JTD, ROUND(M1, 2) M1, ROUND(M, 2)M, ROUND(PKMSTD,2)PKMSTD,  ROUND(KELIPATANMAX,2)KELIPATANMAX, ROUND(KONSTANTA, 2)KONSTANTA, "
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: " SELECT  to_char(a.pro_id )  FROM t_cmo_tipe_promosi a "
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: " SELECT TO_CHAR(b.pro_no_sep), TO_CHAR(b.pro_nama), TO_CHAR(c.pro_tgl_awal, 'DD-MON-YYYY') "
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: " SELECT to_char(b.pro_no_sep), to_char(REPLACE(REPLACE(b.pro_nama, CHR(10), ''), CHR(13), '')) , to_char(c.pro_tgl_awal, 'DD-MON-YYYY'), to_char(c.pro_tgl_akhir, 'DD-MON-YYYY') , to_char(b.pro_id)  "
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: " SELECT to_char(b.pro_no_sep), to_char(b.pro_nama), to_char(c.pro_tgl_awal, 'DD-MON-YYYY'), to_char(c.pro_tgl_akhir, 'DD-MON-YYYY') , to_char(b.pro_id)  "
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "DELETE FROM T_CMO_BAGI_MINGGU WHERE NOCMO = '"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "DELETE TEMP_MINOR_CMO_BAGI_PB  where    NOCMO  ='"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "DELETE from  PO_CMO_QUEUE  where  NOCMO ='"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "DELETE from  T_FILE_TRANSFER  where FTUSER  ='"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "DELETE from LAP_PERHITUNGAN_CMO_DETAIL where USERS ='"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "DELETE from LAP_PERHITUNGAN_CMO_REKAP where USERS ='"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "DELETE from PO_CMO where  NOCMO ='"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "DELETE from TEMP_TRANSAKSIDC_CMO WHERE USERID ='"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "DELETE from TEMP_TRANSAKSIDC_CMO where USERID ='"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "DELETE from TEMP_TRANSAKSIPLU_CMO WHERE USERID ='"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "DELETE from TEMP_TRANSAKSIPLU_CMO where USERID ='"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "DELETE from T_REVISI_CO_PLU where NO_CMO ='"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "INSERT INTO CEK_TOLAKAN_CMO_REV(NO_CMO,  NAMA_FILE, TOLAKAN, USER_UPD, TGL_UPD )VALUES('"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "INSERT INTO H_UPLOAD_REPEAT (NO_CMO, PLU, DC, TGL_KIRIM, QTY, TGL_UPD, JAM_UPD, USER_UPD, IP_ADDRESS) VALUES('"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "INSERT INTO T_REVISI_CO_PLU_TEMP_NEW (NO_CMO, NAMA_FILE, PLU, DC, QTY_CTN, TGL_KIRIM,IP_ADDRESS, USERS) VALUES (:no_urut, '"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "INSERT INTO T_TRFPB (FDFILE,FDUSER,FDKCAB,FDNOUO,FDTGUO,FDKPLU,FDQTYB,FDXREV,FDNOPO) SELECT '"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "INSERT INTO t_trfpb(fdfile,fduser,fdkcab,fdnouo,fdtguo,fdkplu,fdqtyb,fdxrev,fdnopo)SELECT 'CMO','"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "SELECT * FROM CEK_TOLAKAN_CMO_REV WHERE NO_CMO  = '"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "SELECT * FROM HO_PROPOSAL_PROMOSI_T_TEMP where user_seq = '"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "SELECT * FROM T_SUPPLIER WHERE FTKODE = '"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "SELECT * FROM T_TOLAKAN_PB_CMO WHERE FTUSER  = '"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "SELECT * FROM T_TOLAKAN_PB_CMO WHERE NO_CMO  = '"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "SELECT 1 FROM CEK_TOLAKAN_CMO_REV a, T_REVISI_CO_PLU b WHERE to_char(a.no_cmo) = '"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "SELECT TO_CHAR(PLU) PLU, DC, TO_CHAR(QTY)QTY,TO_CHAR(TGL_KIRIM)TGL_KIRIM, KETERANGAN  FROM HASIL_UPLOAD_REPEAT WHERE  USER_FORM = '"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "SELECT TO_CHAR(plu) PLU, dc,TO_CHAR(qty_po) QTY_PO, TO_CHAR(qty_bpb) QTY_BPB, TO_CHAR(qty_po-qty_bpb) AS kurang "
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "SELECT to_char(plu) as plu, "
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "UPDATE  CEK_TOLAKAN_CMO_REV set NO_CMO ='"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "UPDATE PO_CMO_TOLAKAN B SET nopb = NULL WHERE B.v_user_form = '"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "insert into  CEK_TOLAKAN_CMO (TOLAKAN, NO_CMO) values ('Y', '"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "select 1 from LOG_REVCMO where upper(nama_file)= upper('"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "select 1 from t_revisi_co_file where upper(nama_file)= upper('"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "select Cari_Desk_Produk("
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "select Cmo_Convert_Dc_Idm_Igr_Igranak( null,null , DC,"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "select Cmo_Convert_Dc_Idm_Igr_Igranak('"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "select Cmo_Convert_Dc_Idm_Igr_Igranak(null , DC,  null ,"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "select Isdate('"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "select Isnumber('"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: "select ischekedAll_transaksi_DC('"
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: <empty>
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("DELETE FROM T_REVISI_CO_PLU_TEMP_NEW WHERE users='" + nilai_seq + "' and IP_ADDRESS = '" + ip + "'")
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("SELECT " + field + " FROM T_SUPPLIER WHERE FTKODE = {0}", id)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("SELECT FMKODE, FMDESK, FMDESP, FMKETR, FMMERK, FMNAMA, FMFLAV, FMKMSN, FMSIZE, FMDESK_OMI, FMMERK_OMI, FMNAMA_OMI, FMFLAV_OMI, FMKMSN_OMI, FMSIZE_OMI, FMKDIV, FMKDEP, FMKATB, FMNASL, FMRASL, FMNODS, FMPPPN, FMPPMN, FMUBLN, FMUHRI, FMDMIP, FMDMIL, FMDMIT, FMKMKP, FMKMKL, FMKMKT, FMKMBP, FMKMBL, FMKMBT, FMSRNP, FMIBPC, FMSAT1, FMISI1, FMIBKR, FMSAT2, FMISI2, FMIBBX, FMSAT3, FMISI3, FMFBKP, FMFCTR, FMFSCP, FMSPLU, FMGKSN, FMGFLV, FMGSZE, FMGSUB, FMGMRK, FMTGUP, FMUSER, FMFBTP, FMFKGN, FMIPAD, OPTION_BKP, HOME_BRAND, PRINCIPAL, KD_SUB, MERK_EXTEND, PAJAK_RESTO, F_UMUR_BRG, MAX_UMUR_BRG, MAX_UMUR_BRG_S, MAX_UMUR_BRG_DCI, MAX_UMUR_BRG_DCI_S, MAX_RET_TOKO2DCI, MAX_RET_TOKO2DCI_S, MAX_RET_DCI2SUPP, MAX_RET_DCI2SUPP_S, FMFPREK, F_STATUS, LAST_RET_DCI2SUPP, LAST_RET_DCI2SUPP_S, BATAS_RETUR_MJLH, VPROD, VBOX, VCTN, BKPROD, BKBOX, BKCTN, PACKING_KAYU, N_ADJST FROM M_PRODUK WHERE FMKODE = {0}", id)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("SELECT TO_CHAR(NO_CMO) NOCMO FROM CEK_TOLAKAN_CMO WHERE NO_CMO = {0}", NO_CMO)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("delete from {0} where USER_FORM = '{1}' ", TableName, ipAddress)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("insert into {0} ({1}) values({2}) ", TableName, header, data)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("select fmksup from m_curr_supp where fmkode='{0}' and fmksbu='{1}'and FMKCAB='{2}'", plu, opu, cabang)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("select fmksup from m_curr_supp where fmkode='{0}' and fmksbu='{1}'and FMKCAB='{2}'and FMKWIL='{3}'", plu, opu, cabang, Will)
+- [warning] DYNAMIC_PROCEDURE: OracleCommand procedure argument is dynamic: string.Format("select fmksup, fmjnsh from m_curr_supp where fmkode='{0}' and  fmkwil='{1}' and fmksbu='{2}'and FMKCAB='{3}'   and fmktko='{4}'", plu, wil, opu, cabang, toko)
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value:   DELETE FROM T_REVISI_CO_PLU_TEMP_new WHERE users = '
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value:   SELECT DISTINCT  to_char(a.pro_id)  FROM T_CMO_TIPE_PROMOSI a WHERE a.nocmo = '
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: DELETE FROM T_CMO_BAGI_MINGGU WHERE NOCMO = '
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: DELETE FROM T_REVISI_CO_PLU_TEMP_NEW WHERE users='
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: DELETE TEMP_MINOR_CMO_BAGI_PB  where    NOCMO  ='
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: DELETE from  PO_CMO_QUEUE  where  NOCMO ='
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: DELETE from  T_FILE_TRANSFER  where FTUSER  ='
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: DELETE from LAP_PERHITUNGAN_CMO_DETAIL where USERS ='
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: DELETE from LAP_PERHITUNGAN_CMO_REKAP where USERS ='
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: DELETE from PO_CMO where  NOCMO ='
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: DELETE from TEMP_TRANSAKSIDC_CMO WHERE USERID ='
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: DELETE from TEMP_TRANSAKSIDC_CMO where USERID ='
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: DELETE from TEMP_TRANSAKSIPLU_CMO WHERE USERID ='
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: DELETE from TEMP_TRANSAKSIPLU_CMO where USERID ='
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: DELETE from T_REVISI_CO_PLU where NO_CMO ='
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: INSERT INTO CEK_TOLAKAN_CMO_REV(NO_CMO,  NAMA_FILE, TOLAKAN, USER_UPD, TGL_UPD )VALUES('
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: INSERT INTO H_UPLOAD_REPEAT (NO_CMO, PLU, DC, TGL_KIRIM, QTY, TGL_UPD, JAM_UPD, USER_UPD, IP_ADDRESS) VALUES('
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: INSERT INTO T_REVISI_CO_PLU_TEMP_NEW (NO_CMO, NAMA_FILE, PLU, DC, QTY_CTN, TGL_KIRIM,IP_ADDRESS, USERS) VALUES (:no_urut, '
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: INSERT INTO T_TRFPB (FDFILE,FDUSER,FDKCAB,FDNOUO,FDTGUO,FDKPLU,FDQTYB,FDXREV,FDNOPO) SELECT '
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: INSERT INTO t_trfpb(fdfile,fduser,fdkcab,fdnouo,fdtguo,fdkplu,fdqtyb,fdxrev,fdnopo)SELECT 'CMO','
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: SELECT 
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: SELECT * FROM CEK_TOLAKAN_CMO_REV WHERE NO_CMO  = '
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: SELECT * FROM HO_PROPOSAL_PROMOSI_T_TEMP where user_seq = '
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: SELECT * FROM T_SUPPLIER WHERE FTKODE = '
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: SELECT * FROM T_TOLAKAN_PB_CMO WHERE FTUSER  = '
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: SELECT * FROM T_TOLAKAN_PB_CMO WHERE NO_CMO  = '
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: SELECT 1 FROM CEK_TOLAKAN_CMO_REV a, T_REVISI_CO_PLU b WHERE to_char(a.no_cmo) = '
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: SELECT TO_CHAR(PLU) PLU, DC, TO_CHAR(QTY)QTY,TO_CHAR(TGL_KIRIM)TGL_KIRIM, KETERANGAN  FROM HASIL_UPLOAD_REPEAT WHERE  USER_FORM = '
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: SELECT to_char(plu) as plu, 
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: UPDATE  CEK_TOLAKAN_CMO_REV set NO_CMO ='
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: UPDATE PO_CMO_TOLAKAN B SET nopb = NULL WHERE B.v_user_form = '
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: insert into  CEK_TOLAKAN_CMO (TOLAKAN, NO_CMO) values ('Y', '
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: select 1 from LOG_REVCMO where upper(nama_file)= upper('
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: select 1 from t_revisi_co_file where upper(nama_file)= upper('
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: select Cari_Desk_Produk(
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: select Cmo_Convert_Dc_Idm_Igr_Igranak( null,null , DC,
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: select Cmo_Convert_Dc_Idm_Igr_Igranak('
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: select Cmo_Convert_Dc_Idm_Igr_Igranak(null , DC,  null ,
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: select Isdate('
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: select Isnumber('
+- [warning] DYNAMIC_SQL: SQL literal is concatenated with a dynamic value: select ischekedAll_transaksi_DC('
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: CMO_PERIODE_DC_V.Where
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: FILE_REPEAT_CMO.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: FILE_REPEAT_CMO.Where
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: HASIL_HITUNG_REPEAT_CMO.Where
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: LAP_PERHITUNGAN_CMO_REKAP.Where
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: M.ToString
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: M_CMO_DAFTAR.OrderBy
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: M_MINOR.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: M_SAT_BELI.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: M_TIPE_CMO.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: M_TIPE_CMO.OrderBy
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: NILAI_REPEAT_CMO.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: NILAI_REPEAT_CMO.Where
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: PRINCIPAL.ToString
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: TEMP_TRANSAKSIDC_CMO.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: TEMP_TRANSAKSIDC_CMO.Where
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: TEMP_TRANSAKSIPLU_CMO.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: TMP_CMO_BATAL_DETAIL2.Where
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: TMP_CMO_BATAL_RECAP_ITEM.Where
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: TMP_CMO_BATAL_RECAP_PO.Where
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_CABANG.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_CMOLWE_DC.Where
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_CMOLWE_PERIODE.Where
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_CMOLWE_PLU.Where
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_CMO_BAGI_MINGGU.Where
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_CMO_PERIODE_DC.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_CMO_PERIODE_PLU.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_CMO_PERIODE_PLU.Where
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_CMO_PERIODE_PRINCIPAL.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_CMO_PERIODE_PRINCIPAL.Where
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_CMO_PROMO.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_CMO_PROMO.Where
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_CMO_PROMO_DC.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_CMO_PROMO_DC.Where
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_CMO_PROMO_PLU.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_CMO_PROMO_PLU.Where
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_CMO_TIPE_PROMOSI.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_DEPT.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_DIVISI.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_HASIL_HITUNG_TOTAL.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_KATEGORI.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_REVISI_CO_PLU.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_REVISI_CO_PLU.Where
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: T_TOLAKAN_PB_CMO_MINOR.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: V_D_JADWAL_KIRIM.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: V_LAP_PERHITUNGAN_CMO_REKAP1.getall
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: V_T_CMO_PERIODE_DC.FirstOrDefault
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: V_T_CMO_PERIODE_DC.Where
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: V_T_TOLAKAN_PB_CMO_MINOR.Where
+- [warning] UNRESOLVED_METHOD: Data-layer method cannot be resolved: V_T_TOLAKAN_PB_CMO_MINOR2.Where
+

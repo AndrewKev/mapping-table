@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0"
+    xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx"
+    xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+  <edmx:Runtime>
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store"
+          Provider="Oracle.DataAccess.Client"
+          ProviderManifestToken="11.2"
+          xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="StoreContainer">
+          <EntitySet Schema="REPORTING" Name="CUSTOMER"
+              EntityType="Model.Store.CUSTOMER" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+  </edmx:Runtime>
+</edmx:Edmx>
