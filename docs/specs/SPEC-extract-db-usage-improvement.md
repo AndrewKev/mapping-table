@@ -246,7 +246,7 @@ bagian dari verifikasi perubahan ini.
 
     mapping/
     ├── CAPABILITY-MAP.md
-    ├── SPEC-extract-db-usage-improvement.md
+    ├── docs/specs/SPEC-extract-db-usage-improvement.md
     ├── extract_db_usage.py          # snapshot baseline dan target implementasi
     ├── tests/                        # dibuat pada fase implementasi
     └── fixtures/                     # dibuat pada fase implementasi
@@ -443,4 +443,3 @@ Implementasi dianggap memenuhi spec jika:
   tersebut, atau hanya membutuhkan informasi CTE tanpa ketergantungan pada judul?
 - Seberapa jauh simple variable propagation untuk dynamic OracleCommand perlu dilakukan
   sebelum pola tersebut cukup diberi diagnostic?
-

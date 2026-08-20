@@ -2,9 +2,9 @@
 
 Status: Completed
 
-Plan: `mapping/IMPLEMENTATION-PLAN-oracle-calls-filtering.md`
+Plan: `mapping/docs/plans/IMPLEMENTATION-PLAN-oracle-calls-filtering.md`
 
-Spec: `mapping/SPEC-oracle-calls-filtering.md`
+Spec: `mapping/docs/specs/SPEC-oracle-calls-filtering.md`
 
 Tracker: Tidak ada; checklist ini dikelola sebagai Markdown di folder `mapping/`.
 

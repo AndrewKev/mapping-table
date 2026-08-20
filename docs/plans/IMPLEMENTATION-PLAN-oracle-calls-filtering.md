@@ -2,9 +2,9 @@
 
 Status: Completed
 
-Spec: `mapping/SPEC-oracle-calls-filtering.md`
+Spec: `mapping/docs/specs/SPEC-oracle-calls-filtering.md`
 
-Task list: `mapping/TASKS-oracle-calls-filtering.md`
+Task list: `mapping/docs/tasks/TASKS-oracle-calls-filtering.md`
 
 Tracker: Tidak ada; task list dikelola sebagai Markdown di folder `mapping/`.
 

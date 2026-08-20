@@ -2,9 +2,9 @@
 
 Status: Completed
 
-Spec: `mapping/SPEC-reachable-data-layer-read-write.md`
+Spec: `mapping/docs/specs/SPEC-reachable-data-layer-read-write.md`
 
-Task list: `mapping/TASKS-reachable-data-layer.md`
+Task list: `mapping/docs/tasks/TASKS-reachable-data-layer.md`
 
 Tracker: Tidak ada; task list dikelola sebagai Markdown di folder `mapping/`.
 

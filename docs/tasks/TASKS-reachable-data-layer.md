@@ -2,9 +2,9 @@
 
 Status: Completed
 
-Plan: `mapping/IMPLEMENTATION-PLAN-reachable-data-layer.md`
+Plan: `mapping/docs/plans/IMPLEMENTATION-PLAN-reachable-data-layer.md`
 
-Spec: `mapping/SPEC-reachable-data-layer-read-write.md`
+Spec: `mapping/docs/specs/SPEC-reachable-data-layer-read-write.md`
 
 Tracker: Tidak ada; checklist ini adalah task target.
 

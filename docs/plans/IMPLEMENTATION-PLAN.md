@@ -4,12 +4,12 @@ Status: Complete — implementation and verification finished
 
 ## Overview
 
-Plan ini memecah SPEC-extract-db-usage-improvement.md menjadi task kecil yang dapat
+Plan ini memecah docs/specs/SPEC-extract-db-usage-improvement.md menjadi task kecil yang dapat
 dikerjakan dan diverifikasi secara terpisah. Semua artifact plan dan task ditempatkan
 di folder mapping sesuai scope yang telah disepakati. File root extract_db_usage.py
 tidak disentuh; implementation target tetap mapping/extract_db_usage.py.
 
-Tidak ada external tracker. Task list berada di mapping/TASKS.md.
+Tidak ada external tracker. Task list berada di mapping/docs/tasks/TASKS.md.
 
 ## Architecture decisions
 

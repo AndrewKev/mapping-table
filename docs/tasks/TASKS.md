@@ -1,8 +1,8 @@
 # Task Breakdown: Perbaikan extract_db_usage.py
 
 Status: Complete — T001–T021 implemented and verified
-Plan: mapping/IMPLEMENTATION-PLAN.md
-Spec: mapping/SPEC-extract-db-usage-improvement.md
+Plan: mapping/docs/plans/IMPLEMENTATION-PLAN.md
+Spec: mapping/docs/specs/SPEC-extract-db-usage-improvement.md
 Tracker: Tidak ada; checklist ini adalah task target.
 
 Verification result:
@@ -622,8 +622,8 @@ Dependencies: T020
 
 Files likely touched:
 
-- mapping/TASKS.md
-- mapping/IMPLEMENTATION-PLAN.md
+- mapping/docs/tasks/TASKS.md
+- mapping/docs/plans/IMPLEMENTATION-PLAN.md
 
 Estimated scope: S
 

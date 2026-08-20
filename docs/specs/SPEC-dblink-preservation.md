@@ -103,7 +103,7 @@ python3 -B mapping/extract_db_usage.py \
 - `mapping/extract_db_usage.py` — SQL parser, physical object model, and Markdown renderer.
 - `mapping/tests/` — unit, integration, and rendering regression tests.
 - `mapping/output/QuotationMerchandising.md` — generated acceptance artifact.
-- `mapping/SPEC-dblink-preservation.md` — this specification.
+- `mapping/docs/specs/SPEC-dblink-preservation.md` — this specification.
 
 ## Code Style and Output Contract
 
