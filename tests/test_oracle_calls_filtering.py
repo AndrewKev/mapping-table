@@ -1,9 +1,11 @@
 # project : IPRO Revisi Header Laporan Trading Term
+from pathlib import Path  # project : IPRO Revisi Header Laporan Trading Term
 import unittest
 
 from mapping.extract_db_usage import (
     DatabaseCall,
     DbUsage,
+    analyze_controller,  # project : IPRO Revisi Header Laporan Trading Term
     extract_functions_from_sql,
     extract_procedures_from_text,
 )
@@ -84,6 +86,26 @@ class CallIntegrationTests(unittest.TestCase):
             extract_procedures_from_text(source),
             set(),
         )
+
+
+class RealControllerCallTests(unittest.TestCase):
+    # project : IPRO Revisi Header Laporan Trading Term
+    def test_margin_igr_reachable_data_layer_reports_get_flag_bkl(self):
+        project_root = Path(__file__).resolve().parents[2]
+        usage, _files, _methods = analyze_controller(
+            str(
+                project_root
+                / "IMMD.Web/Areas/Transaction/Controllers/MarginIGRController.cs"
+            ),
+            str(project_root / "IMMD.Data"),
+            {},
+        )
+
+        self.assertIn(
+            DatabaseCall("MCGDATA", "GET_FLAG_BKL"),
+            usage.calls,
+        )
+    # end project : IPRO Revisi Header Laporan Trading Term
 
 
 if __name__ == "__main__":

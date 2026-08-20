@@ -2,6 +2,7 @@
 import unittest
 
 from mapping.extract_db_usage import (
+    DatabaseCall,  # project : IPRO Revisi Header Laporan Trading Term
     DbUsage,
     extract_functions_from_sql,
     extract_procedures_from_text,
@@ -57,6 +58,23 @@ class CallExtractionTests(unittest.TestCase):
             {diagnostic.code for diagnostic in usage.diagnostics},
             {"DYNAMIC_SQL"},
         )
+
+    # project : IPRO Revisi Header Laporan Trading Term
+    def test_concatenated_command_text_extracts_custom_function_from_later_fragment(self):
+        usage = DbUsage({})
+        source = r'''
+            cmd.CommandText = "SELECT A.ID FROM T_DATA A " +
+                              "WHERE A.ID = '" + id +
+                              "' AND Get_Flag_Bkl('3', A.REGION, A.ID) = 'Y'";
+        '''
+
+        usage.add_raw_text(source)
+
+        self.assertIn(
+            DatabaseCall("MCGDATA", "GET_FLAG_BKL"),
+            usage.calls,
+        )
+    # end project : IPRO Revisi Header Laporan Trading Term
 
 
 if __name__ == "__main__":

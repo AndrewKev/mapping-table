@@ -7,6 +7,7 @@ url: "/Transaction/MarginIGR"
 
 # Direct Read
 
+- MCGDATA.DC_IGR_IDM
 - MCGDATA.IGR_MARGIN_DC
 - MCGDATA.IGR_MARGIN_DEPT
 - MCGDATA.IGR_MARGIN_KAT
@@ -15,6 +16,7 @@ url: "/Transaction/MarginIGR"
 - MCGDATA.T_CABANG
 - MCGDATA.T_DEPT
 - MCGDATA.T_KATEGORI
+- MCGDATA.T_PLU_DCIDM_TDK_MAIN
 
 # Direct Write
 
@@ -26,6 +28,7 @@ url: "/Transaction/MarginIGR"
 # Calls
 
 - MCGDATA.CARI_DESK_PRODUK
+- MCGDATA.GET_FLAG_BKL
 
 # Analysis Notes
 

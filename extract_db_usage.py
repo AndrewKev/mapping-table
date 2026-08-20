@@ -479,19 +479,28 @@ def looks_like_sql(text):
 
 
 # project : IPRO Revisi Header Laporan Trading Term
-def extract_csharp_string_literals(text):
-    """Yield each C# string literal once, excluding comments and char literals."""
+def extract_csharp_string_literals(text, with_spans=False):
+    """Yield C# string literals, optionally including source spans."""
     literals = []
     i = 0
     n = len(text)
     state = "code"
     current = []
+    literal_start = None
 
-    def start_literal(kind, index):
-        nonlocal state, current, i
+    def start_literal(kind, index, start):
+        nonlocal state, current, i, literal_start
         state = kind
         current = []
         i = index
+        literal_start = start
+
+    def finish_literal(end):
+        value = "".join(current)
+        if with_spans:
+            literals.append((literal_start, end, value))
+        else:
+            literals.append(value)
 
     while i < n:
         ch = text[i]
@@ -511,19 +520,19 @@ def extract_csharp_string_literals(text):
                 i += 2 if i + 1 < n else 0
                 continue
             if ch == "$" and nxt == "@" and nxt2 == '"':
-                start_literal("verbatim", i + 3)
+                start_literal("verbatim", i + 3, i)
                 continue
             if ch == "@" and nxt == "$" and nxt2 == '"':
-                start_literal("verbatim", i + 3)
+                start_literal("verbatim", i + 3, i)
                 continue
             if ch == "@" and nxt == '"':
-                start_literal("verbatim", i + 2)
+                start_literal("verbatim", i + 2, i)
                 continue
             if ch == '$' and nxt == '"':
-                start_literal("regular", i + 2)
+                start_literal("regular", i + 2, i)
                 continue
             if ch == '"':
-                start_literal("regular", i + 1)
+                start_literal("regular", i + 1, i)
                 continue
             if ch == "'":
                 state = "char"
@@ -548,7 +557,7 @@ def extract_csharp_string_literals(text):
                 i += 2
                 continue
             if ch == '"':
-                literals.append("".join(current))
+                finish_literal(i + 1)
                 state = "code"
                 i += 1
                 continue
@@ -562,7 +571,7 @@ def extract_csharp_string_literals(text):
                 i += 2
                 continue
             if ch == '"':
-                literals.append("".join(current))
+                finish_literal(i + 1)
                 state = "code"
                 i += 1
                 continue
@@ -582,17 +591,48 @@ def extract_csharp_string_literals(text):
         yield literal
 
 
+def _is_csharp_string_concatenation(source):
+    """Return true when two literals belong to one ``+`` expression."""
+    if re.fullmatch(r"\s*\+\s*", source, flags=re.DOTALL):
+        return True
+    return bool(
+        re.fullmatch(
+            r"\s*\+\s*[^;{}]*?\s*\+\s*",
+            source,
+            flags=re.DOTALL,
+        )
+    )
+
+
 def extract_sql_literals(text):
-    """Yield SQL-looking C# string literals without duplicate matches."""
+    """Yield SQL-looking C# string expressions without duplicate matches."""
     csharp_fragment = re.compile(
         r'^(?:var|return|using|foreach|catch|throw|try|finally)\b'
         r'|\b(?:if|for|while)\s*\(|\.Where\s*\(|\.ForEach\s*\(',
         flags=re.IGNORECASE,
     )
 
-    for literal in extract_csharp_string_literals(text):
-        if not csharp_fragment.search(literal.strip()) and looks_like_sql(literal):
-            yield literal
+    literals = list(extract_csharp_string_literals(text, with_spans=True))
+    consumed = set()
+    for index, (start, end, literal) in enumerate(literals):
+        if index in consumed:
+            continue
+
+        fragments = [literal]
+        last_end = end
+        next_index = index + 1
+        while next_index < len(literals):
+            next_start, next_end, next_literal = literals[next_index]
+            if not _is_csharp_string_concatenation(text[last_end:next_start]):
+                break
+            fragments.append(next_literal)
+            consumed.add(next_index)
+            last_end = next_end
+            next_index += 1
+
+        candidate = "".join(fragments)
+        if not csharp_fragment.search(candidate.strip()) and looks_like_sql(candidate):
+            yield candidate
 # end project : IPRO Revisi Header Laporan Trading Term
 
 
