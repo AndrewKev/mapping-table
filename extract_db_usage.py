@@ -301,6 +301,19 @@ def split_schema_and_name(name):
 
 
 # project : IPRO Revisi Header Laporan Trading Term
+def split_dblink_name(name):
+    """Return ``(object_name, dblink)`` from a normalized object label."""
+    raw_name = str(name or "").strip().strip("`\"'[];,")
+    if "@" not in raw_name:
+        return raw_name, ""
+    object_name, dblink = raw_name.rsplit("@", 1)
+    if not object_name or not dblink:
+        return raw_name, ""
+    return object_name, dblink.strip("`\"'[];,").upper()
+# end project : IPRO Revisi Header Laporan Trading Term
+
+
+# project : IPRO Revisi Header Laporan Trading Term
 @dataclass(frozen=True)
 class SqlToken:
     kind: str
@@ -593,7 +606,7 @@ def _normalize_sql_identifier(value):
 
 
 def _read_qualified_identifier(tokens, start):
-    """Read ``schema.object`` from a token position."""
+    """Read ``schema.object[@dblink]`` from a token position."""
     if start >= len(tokens) or not _is_identifier_token(tokens[start]):
         return None, start
 
@@ -616,6 +629,15 @@ def _read_qualified_identifier(tokens, start):
         schema = _normalize_sql_identifier(parts[-2])
         name = _normalize_sql_identifier(parts[-1])
         qualified = True
+
+    if (
+        index + 1 < len(tokens)
+        and tokens[index].value == "@"
+        and _is_identifier_token(tokens[index + 1])
+    ):
+        dblink = _normalize_sql_identifier(tokens[index + 1].value)
+        name = f"{name}@{dblink}"
+        index += 2
     return (schema, name, qualified), index
 
 
@@ -679,7 +701,8 @@ def extract_cte_names(sql_or_tokens):
 
 
 def _add_sql_object(found, schema, name):
-    lowered = name.lower() if name else ""
+    object_name, _dblink = split_dblink_name(name)
+    lowered = object_name.lower() if object_name else ""
     if not name or lowered in ORACLE_BUILTIN_OBJECTS or lowered in ORACLE_BUILTINS:
         return
     found.setdefault(name, set()).add(schema)
@@ -775,7 +798,11 @@ def extract_cte_relations(sql):
         body_tokens = tokens[body_start:body_end]
         reads, _writes = _extract_sql_object_ops_tokens(body_tokens, cte_names)
         relations[name].physical_reads = {
-            PhysicalObject(schema=schema, name=object_name)
+            PhysicalObject(
+                schema=schema,
+                name=normalize_name(split_dblink_name(object_name)[0]),
+                dblink=split_dblink_name(object_name)[1],
+            )
             for object_name, schemas in reads.items()
             for schema in schemas
         }
@@ -1475,10 +1502,15 @@ class PhysicalObject:
     schema: str
     name: str
     kind: str = "unknown"
+    dblink: str = ""
+
+    def __post_init__(self):
+        object.__setattr__(self, "dblink", str(self.dblink or "").strip().upper())
 
     @property
     def label(self):
-        return f"{self.schema}.{self.name}"
+        suffix = f"@{self.dblink}" if self.dblink else ""
+        return f"{self.schema}.{self.name}{suffix}"
 
 
 @dataclass(frozen=True)
@@ -1540,15 +1572,21 @@ class DbUsage:
 
     def add_read(self, name, schema=DEFAULT_SCHEMA, kind="unknown"):
         if name:
-            normalized = normalize_name(name)
+            object_name, dblink = split_dblink_name(name)
+            normalized = normalize_name(object_name)
             if normalized:
-                self.read.add(PhysicalObject(self._schema(schema), normalized, kind))
+                self.read.add(
+                    PhysicalObject(self._schema(schema), normalized, kind, dblink)
+                )
 
     def add_write(self, name, schema=DEFAULT_SCHEMA, kind="unknown"):
         if name:
-            normalized = normalize_name(name)
+            object_name, dblink = split_dblink_name(name)
+            normalized = normalize_name(object_name)
             if normalized:
-                self.write.add(PhysicalObject(self._schema(schema), normalized, kind))
+                self.write.add(
+                    PhysicalObject(self._schema(schema), normalized, kind, dblink)
+                )
 
     def add_call(self, name, schema=DEFAULT_SCHEMA, kind="unknown"):
         if name:
@@ -1602,7 +1640,8 @@ class DbUsage:
             if isinstance(physical_read, PhysicalObject):
                 relation.physical_reads.add(physical_read)
             elif isinstance(physical_read, (tuple, list)) and len(physical_read) >= 2:
-                physical_name = normalize_name(physical_read[1])
+                object_name, dblink = split_dblink_name(physical_read[1])
+                physical_name = normalize_name(object_name)
                 if not physical_name:
                     continue
                 relation.physical_reads.add(
@@ -1610,6 +1649,7 @@ class DbUsage:
                         self._schema(physical_read[0]),
                         physical_name,
                         physical_read[2] if len(physical_read) > 2 else "unknown",
+                        dblink,
                     )
                 )
         relation.cte_dependencies.update(
@@ -1759,7 +1799,11 @@ def _yaml_scalar(value):
 def sorted_objects(obj_map):
     if isinstance(obj_map, dict):
         objects = {
-            PhysicalObject(schema, normalize_name(name))
+            PhysicalObject(
+                schema,
+                normalize_name(split_dblink_name(name)[0]),
+                dblink=split_dblink_name(name)[1],
+            )
             for name, schemas in obj_map.items()
             for schema in schemas
         }
