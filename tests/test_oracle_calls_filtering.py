@@ -28,7 +28,8 @@ class BuiltinTests(unittest.TestCase):
     def test_unqualified_oracle_builtins_are_not_functions(self):
         sql = """
         SELECT LISTAGG(A.NAMA, ', ') WITHIN GROUP (ORDER BY A.NAMA),
-               LENGTHB(A.NAMA), NVL(A.NAMA, 'N/A')
+               LENGTHB(A.NAMA), NVL(A.NAMA, 'N/A'),
+               EXTRACT(DAY FROM A.CREATED_AT)
         FROM M_DATA A
         """
 
@@ -37,6 +38,7 @@ class BuiltinTests(unittest.TestCase):
         self.assertNotIn("LISTAGG", functions)
         self.assertNotIn("LENGTHB", functions)
         self.assertNotIn("NVL", functions)
+        self.assertNotIn("EXTRACT", functions)
 
     def test_qualified_oracle_builtin_packages_are_not_functions(self):
         sql = """

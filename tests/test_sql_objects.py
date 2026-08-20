@@ -36,6 +36,14 @@ class SqlObjectTests(unittest.TestCase):
             {"T_SOURCE": {"REPORTING"}},
         )
 
+    def test_oracle_extract_operand_is_not_a_physical_object(self):
+        sql = (
+            "SELECT EXTRACT(DAY FROM LAST_DAY(ADD_MONTHS(TRUNC(SYSDATE), -1))) "
+            "FROM dual"
+        )
+
+        self.assertEqual(extract_tables_from_sql(sql), {})
+
 
 if __name__ == "__main__":
     unittest.main()

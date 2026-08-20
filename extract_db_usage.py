@@ -44,8 +44,8 @@ DATA_LAYER_ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "IMMD
 ORACLE_BUILTINS = {
     "abs", "add_months", "ascii", "avg", "cast", "ceil", "chr", "coalesce",
     "concat", "count", "current_date", "current_timestamp", "decode",
-    "dense_rank", "dual", "exp", "floor", "greatest", "instr", "lag", "lead",
-    "least", "length", "lengthb", "listagg", "lpad", "ltrim", "lower", "max", "min", "mod",
+    "dense_rank", "dual", "exp", "extract", "floor", "greatest", "instr", "lag", "lead",
+    "last_day", "least", "length", "lengthb", "listagg", "lpad", "ltrim", "lower", "max", "min", "mod",
     "months_between", "nvl", "nvl2", "rank", "regexp_like", "regexp_replace",
     "regexp_substr", "replace", "round", "row_number", "rpad", "rtrim",
     "sign", "soundex", "sqrt", "stddev", "substr", "sum", "sysdate", "systimestamp",
@@ -445,7 +445,23 @@ SQL_FUNCTION_NOISE = {
 # project : IPRO Revisi Header Laporan Trading Term
 def looks_like_sql(text):
     tokens = tokenize_sql(text)
-    return bool(tokens and tokens[0].value.lower() in SQL_STATEMENT_STARTS)
+    if not tokens:
+        return False
+
+    statement = tokens[0].value.lower()
+    if statement not in SQL_STATEMENT_STARTS:
+        return False
+    if statement in {"insert", "merge"}:
+        return len(tokens) > 1 and tokens[1].value.lower() == "into"
+    if statement == "delete":
+        return len(tokens) > 1 and tokens[1].value.lower() == "from"
+    if statement == "update":
+        return (
+            len(tokens) > 2
+            and _is_identifier_token(tokens[1])
+            and any(token.value.lower() == "set" for token in tokens[2:])
+        )
+    return True
 # end project : IPRO Revisi Header Laporan Trading Term
 
 
@@ -663,7 +679,8 @@ def extract_cte_names(sql_or_tokens):
 
 
 def _add_sql_object(found, schema, name):
-    if not name or name.lower() in ORACLE_BUILTIN_OBJECTS:
+    lowered = name.lower() if name else ""
+    if not name or lowered in ORACLE_BUILTIN_OBJECTS or lowered in ORACLE_BUILTINS:
         return
     found.setdefault(name, set()).add(schema)
 

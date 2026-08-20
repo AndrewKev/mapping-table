@@ -56,6 +56,17 @@ class SqlLiteralTests(unittest.TestCase):
             extract_table_ops_from_text(source),
             ({}, {}),
         )
+
+    def test_status_message_starting_with_update_is_not_database_sql(self):
+        source = (
+            'Console.WriteLine(rowsAffected > 0 ? "Update successful." : '
+            '"Update failed.");'
+        )
+
+        self.assertEqual(
+            extract_table_ops_from_text(source),
+            ({}, {}),
+        )
     # end project : IPRO Revisi Header Laporan Trading Term
 
 
