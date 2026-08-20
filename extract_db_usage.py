@@ -39,18 +39,31 @@ import xml.etree.ElementTree as ET
 DEFAULT_SCHEMA = "MCGDATA"
 DATA_LAYER_ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "IMMD.Data")
 
+# project : IPRO Revisi Header Laporan Trading Term
 # Oracle built-in functions that must NOT be listed as custom calls.
 ORACLE_BUILTINS = {
     "abs", "add_months", "ascii", "avg", "cast", "ceil", "chr", "coalesce",
     "concat", "count", "current_date", "current_timestamp", "decode",
     "dense_rank", "dual", "exp", "floor", "greatest", "instr", "lag", "lead",
-    "least", "length", "lpad", "ltrim", "lower", "max", "min", "mod",
+    "least", "length", "lengthb", "listagg", "lpad", "ltrim", "lower", "max", "min", "mod",
     "months_between", "nvl", "nvl2", "rank", "regexp_like", "regexp_replace",
     "regexp_substr", "replace", "round", "row_number", "rpad", "rtrim",
     "sign", "soundex", "sqrt", "stddev", "substr", "sum", "sysdate", "systimestamp",
     "to_char", "to_date", "to_number", "translate", "trim", "trunc", "upper",
     "variance",
 }
+
+# Oracle namespaces and package prefixes whose members are built-in calls.
+ORACLE_BUILTIN_NAMESPACE_NAMES = {"standard", "sys"}
+ORACLE_BUILTIN_PACKAGE_PREFIXES = (
+    "apex_",
+    "dbms_",
+    "htf",
+    "htp",
+    "owa_",
+    "utl_",
+)
+# end project : IPRO Revisi Header Laporan Trading Term
 
 # C# runtime method names that look like function calls in raw text but are not
 # Oracle calls. These are used when a regex runs over raw C# rather than SQL.
@@ -788,6 +801,33 @@ def _starts_with_dml(sql):
     })
 
 
+# project : IPRO Revisi Header Laporan Trading Term
+def _is_old_style_outer_join_operand(tokens, index, parts):
+    """Return true for a qualified column followed by the Oracle ``(+)`` marker."""
+    if len(parts) < 2 or index + 3 >= len(tokens):
+        return False
+    return (
+        tokens[index + 1].value == "("
+        and tokens[index + 2].value == "+"
+        and tokens[index + 3].value == ")"
+    )
+
+
+def _is_oracle_builtin_parts(parts):
+    """Return true when a qualified name belongs to Oracle built-ins."""
+    normalized = [str(part).strip().lower() for part in parts if str(part).strip()]
+    if not normalized:
+        return False
+    if normalized[-1] in ORACLE_BUILTINS:
+        return True
+    return any(
+        part in ORACLE_BUILTIN_NAMESPACE_NAMES
+        or any(part.startswith(prefix) for prefix in ORACLE_BUILTIN_PACKAGE_PREFIXES)
+        for part in normalized[:-1]
+    )
+# end project : IPRO Revisi Header Laporan Trading Term
+
+
 def extract_functions_from_sql(sql):
     """Return qualified custom Oracle function calls found in SQL."""
     funcs = set()
@@ -816,9 +856,12 @@ def extract_functions_from_sql(sql):
         }:
             continue
 
+        if _is_old_style_outer_join_operand(tokens, index, parts):
+            continue
+
         name = ".".join(_normalize_sql_identifier(part) for part in parts)
         lowered = parts[-1].lower()
-        if lowered in ORACLE_BUILTINS:
+        if _is_oracle_builtin_parts(parts):
             continue
         if lowered in CSHARP_METHOD_NOISE:
             continue
@@ -860,6 +903,8 @@ def _oracle_command_arguments(text):
 def _is_simple_procedure_name(name):
     name = name.strip()
     if not name or _starts_with_dml(name):
+        return False
+    if _is_oracle_builtin_parts(name.split(".")):
         return False
     if name.lower() in SQL_FUNCTION_NOISE:
         return False
