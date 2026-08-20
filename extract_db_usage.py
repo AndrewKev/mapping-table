@@ -1049,14 +1049,16 @@ def parse_edmx_schema_map(edmx_path, diagnostics=None):
 # C# method extraction
 # ---------------------------------------------------------------------------
 
+# project : IPRO Revisi Header Laporan Trading Term
 METHOD_SIGNATURE = re.compile(
     r'(?:(?:public|private|protected|internal)\s+)+'
     r'(?:static\s+)?'
-    r'(?:[\w<>,\[\]\.\s?]+?)\s+'
-    r'([A-Za-z_]\w*)\s*'
-    r'\(([^()]*)\)\s*'
+    r'(?P<return_type>[\w<>,\[\]\.\s?]+?)\s+'
+    r'(?P<name>[A-Za-z_]\w*)\s*'
+    r'\((?P<parameters>[^()]*)\)\s*'
     r'\{'
 )
+# end project : IPRO Revisi Header Laporan Trading Term
 
 
 def find_matching_brace(text, start):
@@ -1149,14 +1151,18 @@ def extract_method_bodies(text):
     return methods
 
 
+# project : IPRO Revisi Header Laporan Trading Term
 @dataclass(frozen=True)
 class MethodDefinition:
     name: str
     body: str
     start: int
     end: int
+    return_type: str = ""
+# end project : IPRO Revisi Header Laporan Trading Term
 
 
+# project : IPRO Revisi Header Laporan Trading Term
 def extract_method_definitions(text):
     source = strip_csharp_comments(text)
     masked = mask_csharp_non_code(text)
@@ -1167,9 +1173,16 @@ def extract_method_definitions(text):
             continue
         end = find_matching_brace(source, brace)
         definitions.append(
-            MethodDefinition(match.group(1), source[brace:end], match.start(), end)
+            MethodDefinition(
+                match.group("name"),
+                source[brace:end],
+                match.start(),
+                end,
+                match.group("return_type").strip(),
+            )
         )
     return definitions
+# end project : IPRO Revisi Header Laporan Trading Term
 
 
 # ---------------------------------------------------------------------------
@@ -1199,7 +1212,8 @@ def extract_class_spans(text):
     return spans
 
 
-def index_data_layer(root):
+# project : IPRO Revisi Header Laporan Trading Term
+def index_data_layer(root, include_metadata=False):
     """Index data-layer C# files by class name.
 
     Returns (class_files, class_methods).
@@ -1209,6 +1223,7 @@ def index_data_layer(root):
     """
     class_files = {}
     class_methods = {}
+    class_method_definitions = {}
 
     for path in walk_cs_files(root):
         text = strip_csharp_comments(read_file(path))
@@ -1220,6 +1235,7 @@ def index_data_layer(root):
         for cls in classes:
             class_files.setdefault(cls.name, set()).add(path)
             class_methods.setdefault(cls.name, {})
+            class_method_definitions.setdefault(cls.name, {})
 
         for method in methods:
             containers = [
@@ -1230,8 +1246,12 @@ def index_data_layer(root):
                 continue
             owner = min(containers, key=lambda cls: cls.end - cls.start)
             class_methods[owner.name].setdefault(method.name, []).append(method.body)
+            class_method_definitions[owner.name].setdefault(method.name, []).append(method)
 
+    if include_metadata:
+        return class_files, class_methods, class_method_definitions
     return class_files, class_methods
+# end project : IPRO Revisi Header Laporan Trading Term
 
 
 # ---------------------------------------------------------------------------
@@ -1239,6 +1259,136 @@ def index_data_layer(root):
 # ---------------------------------------------------------------------------
 
 STATIC_CALL = re.compile(r'\b([A-Za-z_]\w*)\s*\.\s*([A-Za-z_]\w*)\s*\(')
+
+
+# project : IPRO Revisi Header Laporan Trading Term
+def _known_data_layer_type(type_text, class_files):
+    candidates = re.findall(r'[A-Za-z_]\w*', type_text or "")
+    known = {candidate for candidate in candidates if candidate in class_files}
+    return next(iter(known)) if len(known) == 1 else None
+
+
+def build_method_return_types(class_method_definitions, class_files):
+    """Return unambiguous data-layer return types by class and method."""
+    return_types = {}
+    for class_name, methods in class_method_definitions.items():
+        for method_name, definitions in methods.items():
+            known = set()
+            for definition in definitions:
+                data_layer_type = _known_data_layer_type(
+                    definition.return_type,
+                    class_files,
+                )
+                if data_layer_type:
+                    known.add(data_layer_type)
+            if len(known) == 1:
+                return_types.setdefault(class_name, {})[method_name] = next(iter(known))
+    return return_types
+
+
+VARIABLE_ASSIGNMENT = re.compile(
+    r'\b(?:(?P<declared_type>[A-Za-z_]\w*)\s+)?'
+    r'(?P<variable>[A-Za-z_]\w*)\s*=\s*(?P<value>[^;\r\n]+)'
+)
+
+
+def infer_instance_receiver_types(
+    text,
+    class_files,
+    method_return_types=None,
+    current_class=None,
+):
+    """Infer local receiver types conservatively from source assignments."""
+    receiver_types = {}
+    if current_class in class_files:
+        receiver_types["this"] = current_class
+
+    method_return_types = method_return_types or {}
+    masked = mask_csharp_non_code(text)
+    for match in VARIABLE_ASSIGNMENT.finditer(masked):
+        declared_type = match.group("declared_type")
+        variable = match.group("variable")
+        value = match.group("value")
+        inferred = _known_data_layer_type(declared_type, class_files)
+
+        if not inferred:
+            new_match = re.match(r'\s*new\s+([A-Za-z_]\w*)\b', value)
+            if new_match:
+                inferred = _known_data_layer_type(new_match.group(1), class_files)
+
+        if not inferred:
+            static_match = re.match(
+                r'\s*([A-Za-z_]\w*)\s*\.\s*([A-Za-z_]\w*)\s*\(',
+                value,
+            )
+            if static_match:
+                called_class = static_match.group(1)
+                called_method = static_match.group(2)
+                if called_class in class_files:
+                    inferred = method_return_types.get(called_class, {}).get(
+                        called_method
+                    )
+
+        if inferred:
+            receiver_types[variable] = inferred
+
+    return receiver_types
+
+
+INSTANCE_CALL = re.compile(
+    r'\b(?P<receiver>this|[A-Za-z_]\w*)\s*\.\s*'
+    r'(?P<method>[A-Za-z_]\w*)\s*\('
+)
+INSTANCE_WRITE_METHOD_NAMES = frozenset(
+    {
+        "delete",
+        "deleted",
+        "insert",
+        "inserted",
+        "save",
+        "saved",
+        "update",
+        "updated",
+    }
+)
+
+
+def extract_instance_data_layer_calls(
+    text,
+    class_files,
+    method_return_types=None,
+    current_class=None,
+    diagnostics=None,
+):
+    """Return proven instance data-layer calls and report write-like misses."""
+    receiver_types = infer_instance_receiver_types(
+        text,
+        class_files,
+        method_return_types=method_return_types,
+        current_class=current_class,
+    )
+    calls = set()
+    masked = mask_csharp_non_code(text)
+    for match in INSTANCE_CALL.finditer(masked):
+        receiver = match.group("receiver")
+        method = match.group("method")
+        class_name = receiver_types.get(receiver)
+        if class_name in class_files:
+            calls.add((class_name, method))
+        elif (
+            diagnostics is not None
+            and not receiver[:1].isupper()
+            and method.lower() in INSTANCE_WRITE_METHOD_NAMES
+        ):
+            diagnostics.add_diagnostic(
+                "UNRESOLVED_INSTANCE_RECEIVER",
+                "Instance data-layer receiver cannot be proven: {}.{}".format(
+                    receiver,
+                    method,
+                ),
+            )
+    return calls
+# end project : IPRO Revisi Header Laporan Trading Term
 
 
 def extract_data_layer_calls(text, class_files):
@@ -1464,14 +1614,34 @@ def analyze_controller(controller_path, data_root, schema_map):
     if not text:
         raise RuntimeError("Cannot read controller: " + controller_path)
 
-    class_files, class_methods = index_data_layer(data_root)
+    # project : IPRO Revisi Header Laporan Trading Term
+    class_files, class_methods, class_method_definitions = index_data_layer(
+        data_root,
+        include_metadata=True,
+    )
+    method_return_types = build_method_return_types(
+        class_method_definitions,
+        class_files,
+    )
+    # end project : IPRO Revisi Header Laporan Trading Term
     usage = DbUsage(schema_map)
 
     # 1. Raw SQL + procedures + custom functions directly in the controller.
     usage.add_raw_text(text)
 
     # 2. Resolve every data-layer static method the controller calls.
+    # project : IPRO Revisi Header Laporan Trading Term
     calls = extract_data_layer_calls(text, class_files)
+    for controller_method in extract_method_definitions(text):
+        calls.update(
+            extract_instance_data_layer_calls(
+                controller_method.body,
+                class_files,
+                method_return_types=method_return_types,
+                diagnostics=usage,
+            )
+        )
+    # end project : IPRO Revisi Header Laporan Trading Term
     visited = set()
     queue = deque(calls)
 
@@ -1494,7 +1664,19 @@ def analyze_controller(controller_path, data_root, schema_map):
             usage.add_method_bodies([body])
 
             # Follow chained data-layer calls inside this method body.
-            for nested_cls, nested_method in extract_data_layer_calls(body, class_files):
+            # project : IPRO Revisi Header Laporan Trading Term
+            nested_calls = extract_data_layer_calls(body, class_files)
+            nested_calls.update(
+                extract_instance_data_layer_calls(
+                    body,
+                    class_files,
+                    method_return_types=method_return_types,
+                    current_class=cls,
+                    diagnostics=usage,
+                )
+            )
+            # end project : IPRO Revisi Header Laporan Trading Term
+            for nested_cls, nested_method in nested_calls:
                 nested_key = (nested_cls, nested_method)
                 if nested_key not in visited:
                     queue.append(nested_key)
