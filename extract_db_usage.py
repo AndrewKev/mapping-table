@@ -26,7 +26,6 @@ found in the SQL text.
 import argparse
 from collections import deque
 from dataclasses import dataclass, field
-import json
 import os
 import re
 import sys
@@ -1832,10 +1831,6 @@ def analyze_controller(controller_path, data_root, schema_map):
 # ---------------------------------------------------------------------------
 
 # project : IPRO Revisi Header Laporan Trading Term
-def _yaml_scalar(value):
-    return json.dumps("" if value is None else str(value), ensure_ascii=False)
-
-
 def sorted_objects(obj_map):
     if isinstance(obj_map, dict):
         objects = {
@@ -1855,10 +1850,10 @@ def sorted_objects(obj_map):
 def render_markdown(usage, name, url, id_value):
     lines = []
     lines.append("---")
-    lines.append(f"id: {_yaml_scalar(id_value)}")
-    lines.append(f"name: {_yaml_scalar(name)}")
+    lines.append(f"id: {id_value}")
+    lines.append(f"name: {name}")
     lines.append("group: IMMD")
-    lines.append(f"url: {_yaml_scalar(url)}")
+    lines.append(f"url: {url}")
     lines.append("---")
     lines.append("")
     lines.append("# Direct Read")

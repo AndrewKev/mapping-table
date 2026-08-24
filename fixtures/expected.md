@@ -1,8 +1,8 @@
 ---
-id: "sample"
-name: "Sample"
+id: sample
+name: Sample
 group: IMMD
-url: "/Sample"
+url: /Sample
 ---
 
 # Direct Read
